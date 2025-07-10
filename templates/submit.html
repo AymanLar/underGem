@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card shadow">
+            <div class="card-header bg-primary text-white">
+                <h2 class="h4 mb-0">Submit a Track</h2>
+            </div>
+            <div class="card-body">
+                <form method="POST" class="needs-validation" novalidate>
+                    <div class="mb-3">
+                        <label for="url" class="form-label">Track URL*</label>
+                        <input type="url" class="form-control" id="url" name="url" required
+                               placeholder="https://bandcamp.com/... or https://youtube.com/...">
+                        <div class="form-text">Supported platforms: Bandcamp, YouTube, SoundCloud</div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="artist_name" class="form-label">Artist Name*</label>
+                        <input type="text" class="form-control" id="artist_name" name="artist_name" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="track_title" class="form-label">Track Title*</label>
+                        <input type="text" class="form-control" id="track_title" name="track_title" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="genre" class="form-label">Genre*</label>
+                        <select class="form-select" id="genre" name="genre" required>
+                            <option value="">Select a genre</option>
+                            <option value="Ambient">Ambient</option>
+                            <option value="Electronic">Electronic</option>
+                            <option value="Folk">Folk</option>
+                            <option value="Hip-Hop">Hip-Hop</option>
+                            <option value="Jazz">Jazz</option>
+                            <option value="Metal">Metal</option>
+                            <option value="Pop">Pop</option>
+                            <option value="Punk">Punk</option>
+                            <option value="Rock">Rock</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="region" class="form-label">Region</label>
+                        <input type="text" class="form-control" id="region" name="region"
+                               placeholder="e.g., Berlin, Germany">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="description" class="form-label">Description</label>
+                        <textarea class="form-control" id="description" name="description" rows="3"
+                                  placeholder="What makes this track special?"></textarea>
+                    </div>
+
+                    <div class="text-end">
+                        <button type="submit" class="btn btn-primary">Submit & Discover</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

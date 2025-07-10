@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Edit Profile</h2>
+<form method="POST">
+    <div class="mb-3">
+        <label for="genres_interested" class="form-label">Genres You're Interested In</label>
+        <select class="form-select" id="genres_interested" name="genres_interested" multiple>
+            {% for genre in genre_list %}
+            <option value="{{ genre }}" {% if genre in selected_genres %}selected{% endif %}>{{ genre }}</option>
+            {% endfor %}
+        </select>
+        <div class="form-text">Hold Ctrl (Windows) or Cmd (Mac) to select multiple genres.</div>
+    </div>
+    <button type="submit" class="btn btn-primary">Save</button>
+</form>
+{% endblock %}

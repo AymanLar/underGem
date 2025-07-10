@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Admin Dashboard</h2>
+
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Artist</th>
+                <th>Track</th>
+                <th>Genre</th>
+                <th>Region</th>
+                <th>Timestamp</th>
+                <th>Traded</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for submission in submissions %}
+            <tr>
+                <td>{{ submission.id }}</td>
+                <td>{{ submission.artist_name }}</td>
+                <td>
+                    <a href="{{ submission.url }}" target="_blank">{{ submission.track_title }}</a>
+                </td>
+                <td>{{ submission.genre }}</td>
+                <td>{{ submission.region or '-' }}</td>
+                <td>{{ submission.timestamp.strftime('%Y-%m-%d %H:%M:%S') }}</td>
+                <td>
+                    <span class="badge {% if submission.traded %}bg-success{% else %}bg-warning{% endif %}">
+                        {{ 'Yes' if submission.traded else 'No' }}
+                    </span>
+                </td>
+                <td>
+                    <a href="{{ submission.url }}" class="btn btn-sm btn-primary" target="_blank">View</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

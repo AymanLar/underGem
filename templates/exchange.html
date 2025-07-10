@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card shadow">
+            <div class="card-header bg-success text-white">
+                <h2 class="h4 mb-0">Here's Your Exchange!</h2>
+            </div>
+            <div class="card-body">
+                <h3 class="h5 mb-3">{{ track.track_title }}</h3>
+                <p class="mb-2"><strong>Artist:</strong> {{ track.artist_name }}</p>
+                <p class="mb-2"><strong>Genre:</strong> {{ track.genre }}</p>
+                {% if track.region %}
+                <p class="mb-2"><strong>Region:</strong> {{ track.region }}</p>
+                {% endif %}
+                {% if track.description %}
+                <p class="mb-4"><strong>Description:</strong><br>{{ track.description }}</p>
+                {% endif %}
+                <div class="d-grid gap-2">
+                    <a href="{{ track.url }}" class="btn btn-primary" target="_blank">Listen to Track</a>
+                    <a href="{{ url_for('submit') }}" class="btn btn-outline-primary">Submit Another Track</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
