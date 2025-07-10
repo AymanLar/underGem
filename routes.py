@@ -66,10 +66,19 @@ def init_routes(app):
         from collections import Counter
         import datetime
         today = datetime.date.today()
-        days = [today - datetime.timedelta(days=i) for i in range(48, -1, -1)]
+        
+        # Calculate the start of the week (Monday) for the most recent week
+        days_since_monday = today.weekday()  # 0=Monday, 6=Sunday
+        start_of_week = today - datetime.timedelta(days=days_since_monday)
+        
+        # Create 49 days starting from 6 weeks ago
+        start_date = start_of_week - datetime.timedelta(weeks=6)
+        days = [start_date + datetime.timedelta(days=i) for i in range(49)]
+        
         day_counts = Counter(sub.timestamp.date() for sub in submissions)
         grid = [day_counts.get(day, 0) for day in days]
-        # 7x7 grid
+        
+        # 7x7 grid (7 weeks, 7 days each)
         grid_rows = [grid[i*7:(i+1)*7] for i in range(7)]
 
         return render_template('profile.html', grid_rows=grid_rows, days=days, submissions=submissions)

@@ -1,5 +1,5 @@
 # Environment variables
-SECRET_KEY=your-secret-key-here
+SECRET_KEY=
 FLASK_APP=app.py
 FLASK_ENV=development
 USER_EMAIL_SENDER_EMAIL=noreply@underground.exchange
